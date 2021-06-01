@@ -10,4 +10,4 @@ for arg in $*
 do
 	sum=`expr $sum + $arg` # sum += arg
 done
-echo $um # 출력
+echo $sum # 출력
