@@ -1,0 +1,14 @@
+NR==1 {
+	printf("%4s %3s  %3s %3s %3s %3s %3s\n", $1, $2, $3, $4, $5, "총점", "평균")
+}
+NR>1 {
+	ko += $3
+	en += $4
+	ma += $5
+	printf("%4s %3s %3d %3d %3d   %3d %.1f\n", $1, $2, $3, $4, $5, $3+$4+$5, ($3+$4+$5)/3)
+	count+=1
+} 
+
+END { 
+	printf("\t   %.1f %.1f %.1f\n", ko/count, en/count, ma/count)
+}
