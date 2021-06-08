@@ -1,0 +1,25 @@
+%word = ();
+$exit = 0;
+while ($exit!=1) {
+	printf("단어를 입력하세요.(나갈려면 exitexit) : ");
+	$line=<STDIN>;
+	chomp($line);
+	if($line =~ /exitexit/) {
+		$exit = 1;
+		next;
+	}
+
+	if(exists($word{$line}))
+	{
+		$word{$line}+=1;
+	}
+	else
+	{
+		$word{$line}=1;
+	}
+}
+
+foreach $i (keys(%word)) {
+	printf("%15s : %3d\n", $i, $word{$i});
+}
+

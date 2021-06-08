@@ -1,0 +1,28 @@
+NR==1 {
+        printf("%4s %3s  ", $1, $2)
+	for(i = 3; i <= NF; i++) {
+		printf("%3s ", $i)
+		arr[i-3]=0
+		subj+=1
+	}
+	printf("%3s %3s\n", "총점", "평균")
+}
+NR>1 {
+	printf("%4s %3s  ", $1, $2)
+	sum = 0
+        for(i = 3; i <= NF; i++) {
+                printf("%3s ", $i)
+        	sum += $i
+		arr[i-3]+=$i
+	}
+        printf(" %3d %.1f\n", sum, sum/subj)
+	count+=1
+}
+
+END {
+	printf("\t   ")
+	for(i=0; i<subj; i++) {
+		printf("%.1f ", arr[i]/count)
+	}
+	printf("\n")
+}

@@ -1,0 +1,29 @@
+open file, "grade2";
+
+$line=<file>;
+chomp($line);
+printf("%s %s %s\n", $line, "총점", "평균");
+@arr=split(" ", $line);
+$count=(scalar @arr)-2;
+
+%scores={};
+print(count);
+for $line(<file>) {
+	chomp($line);
+	@arr = split(" ", $line);
+	printf("%4s %3s ", @arr[0], @arr[1]);
+	$sum=0;	
+	foreach $i (1..$count) {	
+		printf("%3d ", @arr[$i+1]);
+		$sum+=@arr[$i+1];
+		$scores{$i}+=@arr[$i+1];
+	}
+	printf(" %3d  %.1f\n", $sum, $sum/$count);
+	$person+=1;
+}
+
+printf("\t    ");
+foreach $i (1..$count) {
+	printf("%.1f ", $scores{$i}/$person);
+}
+printf("\n");
